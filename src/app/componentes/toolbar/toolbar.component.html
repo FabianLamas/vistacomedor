@@ -1,1 +1,33 @@
-<p>toolbar works!</p>
+<mat-form-field color="accent">
+    <mat-label>Desde...</mat-label>
+    <input matInput [matDatepicker]="picker1">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field color="accent">
+    <mat-label>Hasta...</mat-label>
+    <input matInput [matDatepicker]="picker2">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field color="accent">
+    <mat-select placeholder="Categorias">
+        <mat-option value="all">Todas las categorias</mat-option>
+        <mat-option value="empleados">Empleados</mat-option>
+        <mat-option value="visita">Visita Comedor</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field color="accent">
+    <mat-select placeholder="Categorias">
+        <mat-option value="all">Todas las categorias</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field color="accent">
+    <mat-select placeholder="Categorias">
+        <mat-option value="all">Todas las categorias</mat-option>
+    </mat-select>
+</mat-form-field>
