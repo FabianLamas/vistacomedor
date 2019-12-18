@@ -1,19 +1,19 @@
-<mat-form-field color="accent">
+<mat-form-field style="margin-top: 12px; margin-left: 12px" color="accent">
     <mat-label>Desde...</mat-label>
-    <input matInput [matDatepicker]="picker1">
+    <input matInput [matDatepicker]="picker1" [formControl]="date">
     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field color="accent">
     <mat-label>Hasta...</mat-label>
-    <input matInput [matDatepicker]="picker2">
+    <input matInput [matDatepicker]="picker2" [formControl]="date">
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    <mat-datepicker #picker2></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-select placeholder="Categorias">
+    <mat-select placeholder="Categoria">
         <mat-option value="all">Todas las categorias</mat-option>
         <mat-option value="empleados">Empleados</mat-option>
         <mat-option value="visita">Visita Comedor</mat-option>
@@ -21,13 +21,26 @@
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-select placeholder="Categorias">
-        <mat-option value="all">Todas las categorias</mat-option>
+    <mat-select placeholder="Turno">
+        <mat-option value="allTurnos">Todos los turnos</mat-option>
+        <mat-option value="turno">COMIDA</mat-option>
     </mat-select>
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-select placeholder="Categorias">
-        <mat-option value="all">Todas las categorias</mat-option>
+    <mat-select placeholder="Centro de Costo">
+        <mat-option value="allCentros">Todos los centros</mat-option>
+        <mat-option value="centros">ngFor de Centros</mat-option>
     </mat-select>
 </mat-form-field>
+
+<mat-form-field color="accent">
+    <mat-select placeholder="Local">
+        <mat-option value="allLocales">Todos los locales</mat-option>
+        <mat-option value="locales">ngFor de Locales</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<button style="margin-left: 15px" mat-raised-button color="accent">Ver Informe <i class="material-icons">
+        assignment
+        </i></button>
