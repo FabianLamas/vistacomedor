@@ -1,44 +1,60 @@
-<mat-form-field style="margin-top: 12px; margin-left: 12px" color="accent">
-    <mat-label>Desde...</mat-label>
-    <input matInput [matDatepicker]="picker1" [formControl]="date">
+<mat-form-field style="margin-top: 12px; margin-left: 5px" color="accent">
+    <mat-label>
+        Desde
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </mat-label>
+    <input matInput [matDatepicker]="picker1" [formControl]="date1">
+    <mat-error *ngIf="date1.invalid">{{getErrorMessage1()}}</mat-error>
     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-label>Hasta...</mat-label>
-    <input matInput [matDatepicker]="picker2" [formControl]="date">
+    <mat-label>
+        Hasta
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </mat-label>
+    <input matInput [matDatepicker]="picker2" [formControl]="date2">
+    <mat-error *ngIf="date2.invalid">{{getErrorMessage2()}}</mat-error>
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-select placeholder="Categoria">
+    <mat-select>
         <mat-option value="all">Todas las categorias</mat-option>
         <mat-option value="empleados">Empleados</mat-option>
         <mat-option value="visita">Visita Comedor</mat-option>
     </mat-select>
+    <mat-label>
+        <mat-icon>category</mat-icon> Categoria</mat-label>
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-select placeholder="Turno">
+    <mat-select>
         <mat-option value="allTurnos">Todos los turnos</mat-option>
         <mat-option value="turno">COMIDA</mat-option>
     </mat-select>
+    <mat-label>
+        <mat-icon>assignment_turned_in</mat-icon> Turno</mat-label>
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-select placeholder="Centro de Costo">
+    <mat-select>
         <mat-option value="allCentros">Todos los centros</mat-option>
         <mat-option value="centros">ngFor de Centros</mat-option>
     </mat-select>
+    <mat-label>
+        <mat-icon>account_balance</mat-icon> Centro de Costo</mat-label>
 </mat-form-field>
 
 <mat-form-field color="accent">
-    <mat-select placeholder="Local">
+    <mat-select>
         <mat-option value="allLocales">Todos los locales</mat-option>
         <mat-option value="locales">ngFor de Locales</mat-option>
     </mat-select>
+    <mat-label>
+        <mat-icon>apartment</mat-icon> Local</mat-label>
 </mat-form-field>
 
 <button style="margin-left: 15px" mat-raised-button color="accent">Ver Informe <i class="material-icons">
