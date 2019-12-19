@@ -8,69 +8,39 @@
     </mat-form-field>
     <table mat-table [dataSource]="dataSource" matSort>
 
-        <ng-container matColumnDef="auditNumber">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> AuditNumber </th>
-            <td mat-cell *matCellDef="let row"> {{row.auditNumber}} </td>
+        <ng-container matColumnDef="tarjeta">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Tarjeta </th>
+            <td mat-cell *matCellDef="let row"> {{row.tarjeta}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="estadoActual">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> EstadoActual </th>
-            <td mat-cell *matCellDef="let row"> {{row.estadoActual}} </td>
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="number">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Number </th>
-            <td mat-cell *matCellDef="let row"> {{row.number}} </td>
+        <ng-container matColumnDef="centro">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Centro </th>
+            <td mat-cell *matCellDef="let row"> {{row.centro}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="author">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Author </th>
-            <td mat-cell *matCellDef="let row"> {{row.author}} </td>
+        <ng-container matColumnDef="uo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> UO </th>
+            <td mat-cell *matCellDef="let row"> {{row.uo}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="creationStamp">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> CreationStamp </th>
-            <td mat-cell *matCellDef="let row"> {{row.creationStamp}} </td>
+        <ng-container matColumnDef="turno">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Turno </th>
+            <td mat-cell *matCellDef="let row"> {{row.turno}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="answerType">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> AnswerType </th>
-            <td mat-cell *matCellDef="let row"> {{row.answerType}} </td>
+        <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+            <td mat-cell *matCellDef="let row"> {{row.fecha}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="dias">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dias </th>
-            <td mat-cell *matCellDef="let row"> {{row.dias}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="origenPlanMejora">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> OrigenPlanMejora </th>
-            <td mat-cell *matCellDef="let row"> {{row.origenPlanMejora}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="responsible">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Responsible </th>
-            <td mat-cell *matCellDef="let row"> {{row.responsible}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="sabor">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sabor </th>
-            <td mat-cell *matCellDef="let row"> {{row.sabor}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="sector">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sector </th>
-            <td mat-cell *matCellDef="let row"> {{row.sector}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="size">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Size </th>
-            <td mat-cell *matCellDef="let row"> {{row.size}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="topic">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Topic </th>
-            <td mat-cell *matCellDef="let row"> {{row.topic}} </td>
+        <ng-container matColumnDef="hora">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Hora </th>
+            <td mat-cell *matCellDef="let row"> {{row.hora}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
