@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -12,11 +12,20 @@ import {Validators} from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material';
-
+// import { LOCALE_ID } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// import { AppModule } from './';
 import * as _moment from 'moment';
 
 import {default as _rollupMoment} from 'moment';
+import { formatDate, registerLocaleData } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
+import localeEsAr from '@angular/common/locales/es-AR';
+registerLocaleData(localeEsAr, 'es-AR');
+
+import { TableComponent } from 'src/app/componentes/table/table.component';
+import { MainService } from 'src/app/servicios/main.service';
 const moment = _rollupMoment || _moment;
 
 export const MY_FORMATS = {
@@ -38,18 +47,46 @@ export const MY_FORMATS = {
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    { provide: LOCALE_ID, useValue: 'es-AR' },
   ],
 })
 
 export class ToolbarComponent implements OnInit {
+  // tableComponent = new TableComponent(this.mainService);
   date1 = new FormControl(new Date());
   date2 = new FormControl(new Date());
   dateValidate1 = new FormControl('', [Validators.required, Validators.email]);
   dateValidate2 = new FormControl('', [Validators.required, Validators.email]);
   serializedDate = new FormControl((new Date()).toISOString());
-  constructor() { }
+  desde: any;
+  hasta: any;
+  centrosCosto = [];
+
+  constructor(private mainService: MainService, private datePipe: DatePipe) { }
 
   ngOnInit() {
+    // console.log(formatDate('1/12/2019', 'yyyyddMM', 'es-AR'));
+    this.getCentros();
+  }
+
+  getCentros() {
+    this.mainService.getCentrosCosto().subscribe( data => {
+      this.centrosCosto = data;
+      console.log('call API getCentrosCosto');
+      console.log(this.centrosCosto);
+    }, error => {
+      console.log('fallo el call de la API getCentrosCosto');
+      console.log(error);
+    });
+  }
+
+  generarReporte(desde: Date, hasta: Date) {
+    console.log(desde, hasta);
+    // this.desde = this.datePipe.transform(desde, 'YYYYMMDD');
+    // console.log(this.desde);
+
+    this.mainService.sendFechas('20191201', '20191231');
+    // this.tableComponent.generarReporte();
   }
   getErrorMessage1() {
     return this.dateValidate1.hasError('required') ? 'Formato de fecha invalido' :

@@ -6,33 +6,33 @@
                 Desde
                 <mat-icon>keyboard_arrow_down</mat-icon>
             </mat-label>
-            <input matInput [matDatepicker]="picker1" [formControl]="date1">
+            <input matInput [matDatepicker]="picker1" [formControl]="date1" id="desde" name="desde" #desde>
             <mat-error *ngIf="date1.invalid">{{getErrorMessage1()}}</mat-error>
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-        
+
         <mat-form-field color="accent">
             <mat-label>
                 Hasta
                 <mat-icon>keyboard_arrow_down</mat-icon>
             </mat-label>
-            <input matInput [matDatepicker]="picker2" [formControl]="date2">
+            <input matInput [matDatepicker]="picker2" [formControl]="date2" id="hasta" name="hasta" #hasta>
             <mat-error *ngIf="date2.invalid">{{getErrorMessage2()}}</mat-error>
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
-        
+
         <mat-form-field color="accent">
             <mat-select>
                 <mat-option value="all">Todas las categorias</mat-option>
                 <mat-option value="empleados">Empleados</mat-option>
-                <mat-option value="visita">Visita Comedor</mat-option>
+                <!-- <mat-option value="visita">Visita Comedor</mat-option> -->
             </mat-select>
             <mat-label>
                 <mat-icon>category</mat-icon> Categoria</mat-label>
         </mat-form-field>
-        
+
         <mat-form-field color="accent">
             <mat-select>
                 <mat-option value="allTurnos">Todos los turnos</mat-option>
@@ -42,27 +42,27 @@
                 <mat-icon>assignment_turned_in</mat-icon> Turno</mat-label>
         </mat-form-field>
     </div>
-    
+
     <div class="row justify-content-center">
         <mat-form-field color="accent">
-            <mat-select>
+            <mat-select id="centro" #centro>
                 <mat-option value="allCentros">Todos los centros</mat-option>
-                <mat-option value="centros">ngFor de Centros</mat-option>
+                <mat-option *ngFor="let c of centrosCosto" value="centros">{{ c.codigo }}</mat-option>
             </mat-select>
             <mat-label>
                 <mat-icon>account_balance</mat-icon> Centro de Costo</mat-label>
         </mat-form-field>
-        
+
         <mat-form-field color="accent">
             <mat-select>
                 <mat-option value="allLocales">Todos los locales</mat-option>
-                <mat-option value="locales">ngFor de Locales</mat-option>
+                <mat-option value="locales">COUY</mat-option>
             </mat-select>
             <mat-label>
                 <mat-icon>apartment</mat-icon> Local</mat-label>
         </mat-form-field>
 
-        <button style="margin-left: 15px; max-width: 140px; max-height: 40px; margin-top: 10px" mat-raised-button color="accent">Ver Informe <i class="material-icons">assignment</i></button>
+        <button (click)="generarReporte(desde.value, hasta.value)" style="margin-left: 15px; max-width: 140px; max-height: 40px; margin-top: 10px" mat-raised-button color="accent">Buscar Informe<i class="material-icons">assignment</i></button>
 
     </div>
 

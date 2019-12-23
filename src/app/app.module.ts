@@ -22,6 +22,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDividerModule} from '@angular/material/divider';
+
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,9 +49,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatPaginatorModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDividerModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,10 @@
-<div class="mat-elevation-z8" style="margin-left: 24px; margin-right: 24px" color="accent">
+<div class="mat-elevation-z8" style="margin-left: 24px; margin-right: 24px;" color="accent">
     <mat-form-field appearance="outline" style="margin-top: 12px;" color="accent">
-        <input matInput (keyup)="applyFilter($event.target.value)">
+        <input (click)="generarReporte()" (focus)="hideSearch()" (focusout)="showSearch()" matInput (keyup)="applyFilter($event.target.value)">
         <mat-label>
-            Filter
-            <mat-icon>search</mat-icon>
+            Filtrar lista
+            <!-- <mat-divider [vertical]="true"></mat-divider> -->
+            <mat-icon *ngIf="show" style="float: right">search</mat-icon>
         </mat-label>
     </mat-form-field>
     <table mat-table [dataSource]="dataSource" matSort>
