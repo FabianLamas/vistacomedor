@@ -67,21 +67,25 @@ export class ToolbarComponent implements OnInit {
   constructor(private mainService: MainService, private datePipe: DatePipe) { }
 
   ngOnInit() {
+    this.getCentros();
   }
 
   getConsumosFiltrados() {
-    //this.mainService.filter();
-    this.mainService.buscarConsumos();    
-    // this.mainService.getConsumos().subscribe( data => {
-    //   this.consumosHistsList = data;
-    //   console.log('call API getConsumosFiltrados');
-    //   console.log(this.consumosHistsList);
-    // }, error => {
-    //   console.log('fallo el call de la API getConsumosFiltrados');
-    //   console.log(error);
-    // });
+    this.mainService.buscarConsumos();
   }
 
+  getCentros() {
+
+    this.mainService.getCentrosCosto().subscribe( data => {
+      this.centrosCosto = data;
+      console.log('call API getCentrosCosto');
+      console.log(this.centrosCosto);
+    }, error => {
+      console.log('fallo el call de la API getCentrosCosto');
+      console.log(error);
+    });
+
+  }
 
   
   getErrorMessage1() {

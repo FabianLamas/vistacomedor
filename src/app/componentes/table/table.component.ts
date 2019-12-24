@@ -27,6 +27,7 @@ export class TableComponent implements OnInit {
   desde: any;
   hasta: any;
   centrosCosto = [];
+  dateNow = new Date();
 
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -50,7 +51,20 @@ export class TableComponent implements OnInit {
   }
 
   getConsumosMesActual() {
-    this.mainService.getConsumos("20191029","20191127", null).subscribe( data => {
+
+    this.dateNow = new Date;
+
+    var lastday = function(y,m) {
+      return  new Date(y, m + 1 , 0).getDate();
+    }
+    
+    var startDate = '01';
+    var endDate = lastday(this.dateNow.getFullYear(), this.dateNow.getMonth());
+    var mes = this.dateNow.getMonth() + 1;
+    var año = this.dateNow.getFullYear().toString();
+    console.log(año.toString() + mes.toString() + startDate.toString(), año.toString() + mes.toString() + endDate.toString());
+
+    this.mainService.getConsumos(año.toString() + mes.toString() + startDate.toString(), año.toString() + mes.toString() + endDate.toString(), null).subscribe( data => {
       this.histPerso1List = data;
       console.log('call API getConsumosMesActual');
       console.log(this.histPerso1List);
@@ -69,6 +83,10 @@ export class TableComponent implements OnInit {
     var _hasta = (<HTMLInputElement>document.getElementById("hastaInput")).value;
     hasta = this.reformateDate(_hasta);
 
+    if(centro != null){
+      var centro = (<HTMLInputElement>document.getElementById("centro")).value;
+    }
+  
     this.mainService.getConsumos(desde, hasta, centro).subscribe( data => {
       this.histPerso1List = data;
       console.log('call API getConsumosFiltrados');
@@ -83,6 +101,30 @@ export class TableComponent implements OnInit {
   reformateDate(pickerDate: string){
     var reformatedDate = pickerDate.split("/").reverse().join("");
     return reformatedDate;
+  }
+
+  hideSearch() {
+    this.show = false;
+  }
+
+  showSearch() {
+    this.show = true;
+    if (this.show && this.filtro) {
+    this.show = false;
+    }
+  }
+
+  applyFilter(filterValue: string) {
+    this.filtro = true;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (filterValue === '') {
+      this.filtro = false;
+    }
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
 

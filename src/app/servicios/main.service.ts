@@ -33,6 +33,10 @@ export class MainService {
     }
   }
 
+  getCentrosCosto(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:62889/api/CentroCostos/listar%27)');
+  }
+
   buscarConsumos() {    
     this.invokeBuscarFunction.emit();    
   } 
