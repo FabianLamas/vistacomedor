@@ -2,11 +2,8 @@
 
     <div class="row justify-content-center">
         <mat-form-field style="margin-left: 5px" color="accent">
-            <mat-label>
-                Desde
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </mat-label>
-            <input matInput [matDatepicker]="picker1" [formControl]="date1" id="desde" name="desde" #desde>
+            <mat-label> Desde <mat-icon>keyboard_arrow_down</mat-icon></mat-label>
+            <input matInput [matDatepicker]="picker1" [formControl]="date1" id="desdeInput">
             <mat-error *ngIf="date1.invalid">{{getErrorMessage1()}}</mat-error>
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
@@ -17,7 +14,7 @@
                 Hasta
                 <mat-icon>keyboard_arrow_down</mat-icon>
             </mat-label>
-            <input matInput [matDatepicker]="picker2" [formControl]="date2" id="hasta" name="hasta" #hasta>
+            <input matInput [matDatepicker]="picker2" [formControl]="date2" id="hastaInput">
             <mat-error *ngIf="date2.invalid">{{getErrorMessage2()}}</mat-error>
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
@@ -62,7 +59,7 @@
                 <mat-icon>apartment</mat-icon> Local</mat-label>
         </mat-form-field>
 
-        <button (click)="generarReporte(desde.value, hasta.value)" style="margin-left: 15px; max-width: 140px; max-height: 40px; margin-top: 10px" mat-raised-button color="accent">Buscar Informe<i class="material-icons">assignment</i></button>
+        <button (click)="getConsumosFiltrados()" style="margin-left: 15px; max-width: 140px; max-height: 40px; margin-top: 10px" mat-raised-button color="accent">Buscar Informe<i class="material-icons">assignment</i></button>
 
     </div>
 

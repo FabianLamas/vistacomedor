@@ -61,33 +61,29 @@ export class ToolbarComponent implements OnInit {
   desde: any;
   hasta: any;
   centrosCosto = [];
+  
+  consumosHistsList = [];
 
   constructor(private mainService: MainService, private datePipe: DatePipe) { }
 
   ngOnInit() {
-    // console.log(formatDate('1/12/2019', 'yyyyddMM', 'es-AR'));
-    this.getCentros();
   }
 
-  getCentros() {
-    this.mainService.getCentrosCosto().subscribe( data => {
-      this.centrosCosto = data;
-      console.log('call API getCentrosCosto');
-      console.log(this.centrosCosto);
-    }, error => {
-      console.log('fallo el call de la API getCentrosCosto');
-      console.log(error);
-    });
+  getConsumosFiltrados() {
+    //this.mainService.filter();
+    this.mainService.buscarConsumos();    
+    // this.mainService.getConsumos().subscribe( data => {
+    //   this.consumosHistsList = data;
+    //   console.log('call API getConsumosFiltrados');
+    //   console.log(this.consumosHistsList);
+    // }, error => {
+    //   console.log('fallo el call de la API getConsumosFiltrados');
+    //   console.log(error);
+    // });
   }
 
-  generarReporte(desde: Date, hasta: Date) {
-    console.log(desde, hasta);
-    // this.desde = this.datePipe.transform(desde, 'YYYYMMDD');
-    // console.log(this.desde);
 
-    this.mainService.sendFechas('20191201', '20191231');
-    // this.tableComponent.generarReporte();
-  }
+  
   getErrorMessage1() {
     return this.dateValidate1.hasError('required') ? 'Formato de fecha invalido' :
             '';
