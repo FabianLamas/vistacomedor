@@ -1,4 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-image: url("assets/background2.jpg");
+    background-attachment: fixed;
+    background-size:     cover;                  
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.myTitulo{
+    text-align: center;
+    color: yellow;
+    margin: 30px 0;
+}
+
+.mat-app-background {
+    background-color: #00000069;
+    color: #fff;
+}
+
+.mat-table {
+    background: #0000000a;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+}
+
+.mat-paginator {
+    background: #00000054;
+}

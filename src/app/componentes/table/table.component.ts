@@ -63,10 +63,10 @@ export class TableComponent implements OnInit {
 
   getConsumosFiltrados(desde: string, hasta: string, centro?: string) {
     
-    var _desde = document.getElementById("desdeInput").value;
+    var _desde = (<HTMLInputElement>document.getElementById("desdeInput")).value;
     desde = this.reformateDate(_desde);
     
-    var _hasta = document.getElementById("hastaInput").value;
+    var _hasta = (<HTMLInputElement>document.getElementById("hastaInput")).value;
     hasta = this.reformateDate(_hasta);
 
     this.mainService.getConsumos(desde, hasta, centro).subscribe( data => {
