@@ -61,7 +61,6 @@ export class ToolbarComponent implements OnInit {
   desde: any;
   hasta: any;
   centrosCosto = [];
-  
   consumosHistsList = [];
 
   constructor(private mainService: MainService, private datePipe: DatePipe) { }
@@ -87,7 +86,6 @@ export class ToolbarComponent implements OnInit {
 
   }
 
-  
   getErrorMessage1() {
     return this.dateValidate1.hasError('required') ? 'Formato de fecha invalido' :
             '';

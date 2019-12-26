@@ -12,32 +12,32 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class MainService {
 
-  invokeBuscarFunction = new EventEmitter();    
-  subsVar: Subscription; 
+  invokeBuscarFunction = new EventEmitter();
+  subsVar: Subscription;
 
   constructor(private http: HttpClient) { }
 
-  filter(desde: string, hasta: string, centro?: string){
-    if(centro == null){
+  filter(desde: string, hasta: string, centro?: string) {
+    if (centro == null) {
       this.getConsumos(desde, hasta);
-    }else{
+    } else{
       this.getConsumos(desde, hasta, centro);
     }
   }
 
   getConsumos(desde: string, hasta: string, centro?: string): Observable<any[]> {
-    if(centro == null){
+    if (centro == null) {
       return this.http.get<any[]>(`http://localhost:62889/api/ConsumosHists/buscarConsumos/${desde}/${hasta}`);
-    }else{
+    } else {
       return this.http.get<any[]>(`http://localhost:62889/api/ConsumosHists/buscarConsumos/${desde}/${hasta}/${centro}`);
     }
   }
 
   getCentrosCosto(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:62889/api/CentroCostos/listar%27)');
+    return this.http.get<any[]>('http://localhost:62889/api/CentroCostos/listar');
   }
 
-  buscarConsumos() {    
-    this.invokeBuscarFunction.emit();    
-  } 
+  buscarConsumos() {
+    this.invokeBuscarFunction.emit();
+  }
 }

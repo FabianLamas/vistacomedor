@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 import {DatePipe} from '@angular/common';
 
@@ -50,7 +51,8 @@ import {DatePipe} from '@angular/common';
     MatPaginatorModule,
     MatTableModule,
     HttpClientModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableExporterModule
   ],
   providers: [
     DatePipe

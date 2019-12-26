@@ -8,6 +8,7 @@ import { Consumos } from 'src/app/modelos/Consumos';
 import { ConsumosHists } from 'src/app/modelos/ConsumosHists';
 import { HistPerso1 } from '../../modelos/HistPerso1';
 import { ToolbarComponent } from 'src/app/componentes/toolbar/toolbar.component';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-table',
@@ -28,16 +29,17 @@ export class TableComponent implements OnInit {
   hasta: any;
   centrosCosto = [];
   dateNow = new Date();
+  fileName = 'ReporteConsumos.xlsx';
 
 @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private mainService: MainService) {
-    if (this.mainService.subsVar==undefined) {    
+    if (this.mainService.subsVar==undefined) {
       this.mainService.subsVar = this.mainService.invokeBuscarFunction.subscribe((name:string) => {    
-        this.getConsumosFiltrados("","", null);    
-      });    
-    }    
+        this.getConsumosFiltrados("","", null);
+      });
+    }
   }
 
   ngOnInit() {
@@ -76,17 +78,17 @@ export class TableComponent implements OnInit {
   }
 
   getConsumosFiltrados(desde: string, hasta: string, centro?: string) {
-    
+
     var _desde = (<HTMLInputElement>document.getElementById("desdeInput")).value;
     desde = this.reformateDate(_desde);
-    
+
     var _hasta = (<HTMLInputElement>document.getElementById("hastaInput")).value;
     hasta = this.reformateDate(_hasta);
 
     if(centro != null){
       var centro = (<HTMLInputElement>document.getElementById("centro")).value;
     }
-  
+
     this.mainService.getConsumos(desde, hasta, centro).subscribe( data => {
       this.histPerso1List = data;
       console.log('call API getConsumosFiltrados');
@@ -125,6 +127,16 @@ export class TableComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  exportexcel(): void {
+    let element = document.getElementById('excel-table'); 
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    XLSX.writeFile(wb, this.fileName);
   }
 }
 

@@ -1,9 +1,8 @@
-<div class="mat-elevation-z8" style="margin-left: 24px; margin-right: 24px;" color="accent">
+<!-- <div class="mat-elevation-z8" style="margin-left: 24px; margin-right: 24px;" color="accent">
     <mat-form-field appearance="outline" style="margin-top: 12px;" color="accent">
         <input (click)="generarReporte()" (focus)="hideSearch()" (focusout)="showSearch()" matInput (keyup)="applyFilter($event.target.value)">
         <mat-label>
             Filtrar lista
-            <!-- <mat-divider [vertical]="true"></mat-divider> -->
             <mat-icon *ngIf="show" style="float: right">search</mat-icon>
         </mat-label>
     </mat-form-field>
@@ -23,11 +22,6 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Centro de Costo </th>
             <td mat-cell *matCellDef="let row"> {{row.centroCosto}} </td>
         </ng-container>
-
-        <!-- <ng-container matColumnDef="uo">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> UO </th>
-            <td mat-cell *matCellDef="let row"> {{row.uo}} </td>
-        </ng-container> -->
 
         <ng-container matColumnDef="numero_turno">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Turno </th>
@@ -51,4 +45,52 @@
 
     <mat-paginator style="padding-right: 70px" class="mat-paginator-sticky" [pageSizeOptions]="[5, 10, 25, 100]" color="accent">
     </mat-paginator>
+</div> -->
+
+
+<div class="mat-elevation-z8" style="margin-left: 24px; margin-right: 24px;" color="accent">
+    <mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" [hiddenColumns]="[0]">
+  
+      <ng-container matColumnDef="numero_tarjeta">
+        <mat-header-cell *matHeaderCellDef> tarjeta </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.numero_tarjeta}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef> nombre </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="centroCosto">
+        <mat-header-cell *matHeaderCellDef> centro </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.centroCosto}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="numero_turno">
+        <mat-header-cell *matHeaderCellDef> turno </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.numero_turno}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="turno">
+            <mat-header-cell *matHeaderCellDef> turno </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.turno}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha_Consumo">
+        <mat-header-cell *matHeaderCellDef> fecha </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fecha_Consumo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="hora">
+        <mat-header-cell *matHeaderCellDef> hora </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.hora}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'test', sheet: 'sheet_name', Props: {Author: 'Talha'}})">Descargar</button>
+  <div>
 </div>
